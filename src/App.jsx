@@ -8,6 +8,9 @@ const getLastId = (list) => {
   let lastId = list[0].id + 1;
   list.forEach((item) => (item.id >= lastId ? (lastId = item.id + 1) : ""));
   console.log(lastId);
+  if (lastId === list[-1].id) {
+    console.log("Non va bene");
+  }
   return lastId;
 };
 
