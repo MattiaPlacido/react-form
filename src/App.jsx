@@ -8,11 +8,7 @@ const getNextId = (list) => {
   //id di default
   let lastId = 1;
 
-  const idList = [];
-
-  list.forEach((item) => {
-    idList.push(item.id);
-  });
+  const idList = list.map((item) => item.id);
 
   while (idList.includes(lastId)) {
     lastId++;
