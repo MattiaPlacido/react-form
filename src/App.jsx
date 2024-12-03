@@ -8,6 +8,7 @@ const getLastId = (list) => {
   let lastId = list[0].id + 1;
   list.forEach((item) => (item.id >= lastId ? (lastId = item.id + 1) : ""));
   console.log(lastId);
+
   return lastId;
 };
 
@@ -32,9 +33,9 @@ function App() {
     //impedisce che venga ricaricata la pagina ogni volta avvenga l'evento
     e.preventDefault();
     //creo una nuova lista che conterrà quella vecchia + l'oggetto nuovo
-    const newList = items;
+    const newList = [...items];
     newList.push({
-      id: getLastId(dataList),
+      id: getLastId(items),
       title: title,
       author: author,
       published: true,
