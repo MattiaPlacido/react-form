@@ -4,9 +4,20 @@ import "./assets/css/App.css";
 import { list as dataList } from "./assets/data/data.js";
 
 //FUNZIONI
-const getLastId = (list) => {
-  let lastId = list[0].id + 1;
-  list.forEach((item) => (item.id >= lastId ? (lastId = item.id + 1) : ""));
+const getNextId = (list) => {
+  //id di default
+  let lastId = 1;
+
+  const idList = [];
+
+  list.forEach((item) => {
+    idList.push(item.id);
+  });
+
+  while (idList.includes(lastId)) {
+    lastId++;
+  }
+
   console.log(lastId);
 
   return lastId;
@@ -35,7 +46,7 @@ function App() {
     //creo una nuova lista che conterrà quella vecchia + l'oggetto nuovo
     const newList = [...items];
     newList.push({
-      id: getLastId(items),
+      id: getNextId(items),
       title: title,
       author: author,
       published: true,
